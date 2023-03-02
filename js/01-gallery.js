@@ -38,12 +38,5 @@ function onGalleryClick (event) {
 
         basicLightbox.create(`
             <img src="${sourceLink}">
-        `).show()
-
-        function onEscBtn (event) {
-            if (event.code === 'Escape') {
-                parentImg.removeEventListener("keydown", onEscBtn);
-            }
-        }
+        `).show();     
     };
-// };
