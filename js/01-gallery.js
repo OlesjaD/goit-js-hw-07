@@ -27,6 +27,23 @@ function createGaleryEl(galleryItems) {
 
 function onGalleryClick (event) {
     event.preventDefault();
-    console.log(event.target.nodeName);
-    console.log(event.target.dataset.source);
-};
+
+    if (event.target.nodeName !== 'IMG') {
+        return;
+    }
+    // console.log(event.target.nodeName);
+
+    let sourceLink = event.target.dataset.source;
+    // console.log(sourceLink);
+
+        basicLightbox.create(`
+            <img src="${sourceLink}">
+        `).show()
+
+        function onEscBtn (event) {
+            if (event.code === 'Escape') {
+                parentImg.removeEventListener("keydown", onEscBtn);
+            }
+        }
+    };
+// };
