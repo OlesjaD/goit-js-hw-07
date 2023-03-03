@@ -1,7 +1,7 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
-console.log(galleryItems);
+// console.log(galleryItems);
 const containerGallery = document.querySelector('.gallery');
 const createGaleryItems = createGaleryEl(galleryItems);
 containerGallery.insertAdjacentHTML("beforeend", createGaleryItems);
@@ -28,11 +28,6 @@ function onGalleryClick (event) {
     if (event.target.nodeName !== 'IMG') {
         return;
     }
-    new SimpleLightbox('.gallery a', {galleryItems});
+    new SimpleLightbox('.gallery a', {captionsData: 'alt', captionDelay: 250,});
 
-    let gallery = new SimpleLightbox('.gallery a');
-    gallery.on('show.simplelightbox', function () {
-        let descriptionLink = event.target.alt;
-        console.log(descriptionLink);
-    });
 };
