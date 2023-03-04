@@ -36,7 +36,17 @@ function onGalleryClick (event) {
     let sourceLink = event.target.dataset.source;
     // console.log(sourceLink);
 
-        basicLightbox.create(`
-            <img src="${sourceLink}">
-        `).show();     
+    const instance = basicLightbox.create(`
+            <img src="${sourceLink}"\>`,
+            {
+                onShow: (instance) => {containerGallery.addEventListener("keydown", onEscBtn)},
+                onClose: (instance) => {containerGallery.removeEventListener("keydown", onEscBtn)}
+            });
+    instance.show();   
+    function onEscBtn (event) {
+        if (event.code === "Escape") {
+            instance.close();
+        }
     };
+    };
+    
